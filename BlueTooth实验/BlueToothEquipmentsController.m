@@ -167,6 +167,8 @@ typedef NS_ENUM(NSInteger, BluetoothFailState){
     NSString *perName = [NSString stringWithFormat:@"%@",peripheral.name];
     if (![self.dataArray containsObject:peripheral]) {
         [self.dataArray addObject:peripheral];
+        unsigned absRSSI = RSSI.integerValue > 0 ? RSSI.unsignedIntegerValue : -RSSI.integerValue;
+        NSLog(@"信号量：%u",absRSSI);
         //NSLog(@"添加设备：%@，进入列表",peripheral.identifier);
     }
     [self.tableView reloadData];
